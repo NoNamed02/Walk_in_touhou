@@ -7,7 +7,7 @@ public class out_btn_shop : MonoBehaviour
     public GPSManager player;
     public CameraSwitch cameraswitch;
     // 버튼을 눌렀을 때 호출되는 함수
-    public void GoTo()
+    public void GoToWorldcamera()
     {
         player.ismove = true;
         cameraswitch.isCamera1Active = 1;
