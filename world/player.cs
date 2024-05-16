@@ -24,6 +24,8 @@ public class GPSManager : MonoBehaviour
 
     public bool ismove = true;
 
+    public bool forced_move = false;
+
     // 방향 변수
     public int pos_dir = 0; // 0 - y+ / 1 - x+ / 2 - y- / 3 - x-
 
@@ -54,7 +56,8 @@ public class GPSManager : MonoBehaviour
         // GPS 값을 업데이트합니다.
         UpdateGPSValues();
         distanceMoved *= Time.deltaTime * movementSpeed;
-        distanceMoved = vector_move.value / 100; // 강제이동
+        if(forced_move == true)
+            distanceMoved = vector_move.value / 100; // 강제이동
         Vector3 newPosition = transform.position;
         if(pos_dir == 0){
             animator.SetInteger("move_check", 0);
