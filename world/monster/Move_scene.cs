@@ -1,44 +1,52 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+using System.Collections;
 
-public class Move_scene : MonoBehaviour
+public class move_scence : MonoBehaviour
 {
-    public float fadeInDuration = 2f; // 페이드 인에 걸리는 시간
-    private float currentAlpha = 0f; // 현재 알파 값
-
-    private Image image;
+    public float maxAlpha = 1f; // 최대 투명도
+    private Image imageComponent; // UI 이미지 컴포넌트
+    public bool isactive = false;
+    
+    public fight_control fight;
+    public CameraSwitch C;
 
     void Start()
     {
-        image = GetComponent<Image>();
-        StartCoroutine(FadeIn());
+        imageComponent = GetComponent<Image>();
     }
 
     void Update()
     {
-        if (currentAlpha >= 1f)
+        if (!isactive && imageComponent.color.a < maxAlpha)
         {
-            ChangeScene();
-            Destroy(gameObject);
+            isactive = true;
+            StartCoroutine(FadeImage());
+        }
+
+        if(imageComponent.color.a >= maxAlpha){
+            fight.is_start = true;
+            C.isCameraActive = 3;
+            isactive = false;
+            imageComponent.color = new Color(0,0,0,0);
+            gameObject.SetActive(false);
         }
     }
 
-    IEnumerator FadeIn()
+    IEnumerator FadeImage()
     {
-        while (currentAlpha < 1f)
+        while (true)
         {
-            currentAlpha += Time.deltaTime / fadeInDuration;
-            image.color = new Color(image.color.r, image.color.g, image.color.b, currentAlpha);
+            if (imageComponent.color.a < maxAlpha)
+            {
+                imageComponent.color += new Color(0f, 0f, 0f, 0.01f);
+            }
+            else
+            {
+                break;
+            }
             yield return null;
         }
     }
-
-    void ChangeScene()
-    {
-        // 씬을 변경하는 코드를 여기에 추가하세요.
-        // 예를 들어 SceneManager.LoadScene()을 사용할 수 있습니다.
-        SceneManager.LoadScene("Fight");
-    }
 }
+
