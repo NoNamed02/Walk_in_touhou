@@ -5,18 +5,14 @@ public class Gamemanager : MonoBehaviour
     private static Gamemanager _instance;
     public static Gamemanager Instance { get { return _instance; } }
 
-    /// <summary>
-    /// 전투 관련 함수들
-    /// </summary>
+    // 전투 관련 함수들
     public float player_HP = 100;
     public float maxHP = 100; //* 최대 체력
-    public float forced = 5;
+    public float power = 5;
+    public float defense = 0;
+    public float dodge = 0;
     public bool iswin = false;
-    public bool fightend = false;
 
-    /// <summary>
-    /// 월드 관련 변수들
-    /// </summary>
     public Vector3 playerPosition; // 플레이어의 위치를 저장하는 변수
     public bool S_move = false;
 
