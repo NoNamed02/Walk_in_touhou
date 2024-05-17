@@ -31,6 +31,8 @@ public class GPSManager : MonoBehaviour
 
     //////////////////////////////위에는 전부 좌표 관련////////////////////////////////////////////
     private Animator animator;
+    //전투
+    public fight_control fight_Control;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -46,7 +48,7 @@ public class GPSManager : MonoBehaviour
 
     void Update()
     {
-        if(Gamemanager.Instance.player_HP <= 0)
+        if(Gamemanager.Instance.player_HP <= 0 && fight_Control.is_start == false)
             Gamemanager.Instance.player_HP = 1; // 체력 0이면 1로 부활
             
         if(Gamemanager.Instance.S_move == true){
@@ -57,7 +59,7 @@ public class GPSManager : MonoBehaviour
         UpdateGPSValues();
         distanceMoved *= Time.deltaTime * movementSpeed;
         if(forced_move == true)
-            distanceMoved = vector_move.value / 100; // 강제이동
+            distanceMoved = vector_move.value / 100; // 강제이동 //////////////////////////////////////////////
         Vector3 newPosition = transform.position;
         if(pos_dir == 0){
             animator.SetInteger("move_check", 0);
