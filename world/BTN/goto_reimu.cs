@@ -4,8 +4,16 @@ using UnityEngine.SceneManagement;
 public class goto_reimu : MonoBehaviour
 {
     // 버튼을 눌렀을 때 호출되는 함수
-    public void GoToReimuScene()
+    public text_manager text_Manager;
+    public GPSManager player;
+    public CameraSwitch C;
+    public GameObject text_M;
+    // 버튼을 눌렀을 때 호출되는 함수
+    public void GoTo()
     {
-        SceneManager.LoadScene("Reimu"); // "Reimu" 씬으로 이동
+        if(text_Manager.is_First == false)
+            text_M.GetComponent<text_manager>().DisplayNextSentence();
+        player.ismove = false;
+        C.isCameraActive = 4;
     }
 }
