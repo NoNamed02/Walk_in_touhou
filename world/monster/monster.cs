@@ -38,6 +38,7 @@ public class monster : MonoBehaviour
             {
                 monsterCollider.enabled = false;
                 player.ismove = false;
+                Destroy(gameObject);
                 move_scence.SetActive(true);
             }
         }
