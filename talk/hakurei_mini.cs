@@ -23,8 +23,10 @@ public class hakurei_mini : MonoBehaviour
 
     void Update()
     {
-        if(control.score >= 20)
+        if(control.score >= 20){
+            NPCManager.Instance.like += 5;
             gameObject.SetActive(false);
+        }
     }
 
     void set_active()
