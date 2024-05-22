@@ -58,9 +58,11 @@ public class GPSManager : MonoBehaviour
         // GPS 값을 업데이트합니다.
         UpdateGPSValues();
         distanceMoved *= Time.deltaTime * movementSpeed;
+        
         if(forced_move == true)
             distanceMoved = vector_move.value / 100; // 강제이동 //////////////////////////////////////////////
         Vector3 newPosition = transform.position;
+
         if(pos_dir == 0){
             animator.SetInteger("move_check", 0);
             newPosition.y += distanceMoved;}
