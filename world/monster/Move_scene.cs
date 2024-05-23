@@ -14,6 +14,16 @@ public class move_scence : MonoBehaviour
     void Start()
     {
         imageComponent = GetComponent<Image>();
+        GameObject fightObject = GameObject.Find("spwan-f_c");
+        if (fightObject != null)
+        {
+            fight = fightObject.GetComponent<fight_control>();
+        }
+        GameObject cameraswitchObject = GameObject.Find("Cameraswitch");
+        if (cameraswitchObject != null)
+        {
+            C = cameraswitchObject.GetComponent<CameraSwitch>();
+        }
     }
 
     void Update()
