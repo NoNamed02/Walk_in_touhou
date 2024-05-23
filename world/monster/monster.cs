@@ -14,9 +14,25 @@ public class monster : MonoBehaviour
 
     void Start()
     {
-
         // Collider2D 컴포넌트를 찾아서 monsterCollider 변수에 할당합니다.
         monsterCollider = GetComponent<Collider2D>();
+        GameObject move_scenceObject = GameObject.Find("Move_scene");
+        if (move_scenceObject != null)
+        {
+            move_scence = move_scenceObject;
+        }
+
+        GameObject cameraswitchObject = GameObject.Find("Cameraswitch");
+        if (cameraswitchObject != null)
+        {
+            cameraswitch = cameraswitchObject.GetComponent<CameraSwitch>();
+        }
+
+        GameObject playerObject = GameObject.Find("Player");
+        if (playerObject != null)
+        {
+            player = playerObject.GetComponent<GPSManager>();
+        }
 
         // Collider2D를 찾지 못한 경우 오류 메시지를 표시합니다.
         if (monsterCollider == null)
@@ -38,8 +54,8 @@ public class monster : MonoBehaviour
             {
                 monsterCollider.enabled = false;
                 player.ismove = false;
-                Destroy(gameObject);
                 move_scence.SetActive(true);
+                Destroy(gameObject);
             }
         }
     }
