@@ -60,7 +60,7 @@ public class GPSManager : MonoBehaviour
         distanceMoved *= Time.deltaTime * movementSpeed;
         
         if(forced_move == true)
-            distanceMoved = vector_move.value / 100; // 강제이동 //////////////////////////////////////////////
+            distanceMoved = vector_move.value / 50; // 강제이동 //////////////////////////////////////////////
         Vector3 newPosition = transform.position;
 
         if(pos_dir == 0){
