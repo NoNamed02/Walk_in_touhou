@@ -5,9 +5,12 @@ using UnityEngine;
 public class Gold_obj : MonoBehaviour
 {
     public GameObject Text;
+    public AudioSource Sound;
+    public Collider2D col;
     void Start()
     {
-        
+        Sound = GetComponent<AudioSource>();
+        col = GetComponent<Collider2D>();
     }
 
     void Update()
@@ -18,8 +21,10 @@ public class Gold_obj : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player")) //
         {
+            col.enabled = false;
+            Sound.Play();
             NPCManager.Instance.Gold += 1;
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
         Text.SetActive(true);
     }

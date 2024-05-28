@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class enemy_fight : MonoBehaviour
 {
+    public AudioSource Sound;
     public float speed = 5f; // 플레이어의 이동 속도
     public float backwardForce = 10000f; // 뒤로 가할 힘
 
@@ -13,6 +14,7 @@ public class enemy_fight : MonoBehaviour
 
     void Start()
     {
+        Sound = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>(); // Rigidbody2D 컴포넌트 가져오기
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
@@ -32,6 +34,7 @@ public class enemy_fight : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player")) // 충돌한 객체가 enemy 태그를 가지고 있는 경우
         {
+            Sound.Play();
             // 오브젝트의 현재 방향으로 반대 방향으로 힘을 가합니다.
             rb.AddForce(transform.right * backwardForce);
             HP -= Gamemanager.Instance.power;

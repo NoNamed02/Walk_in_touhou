@@ -13,27 +13,50 @@ public class fight_control : MonoBehaviour
     public GameObject enemy;
     public enemy_fight e;
     public bool is_start = false;
-    // Update is called once per frame
+
+    public AudioSource Sound;
+
+    private bool soundPlayed = false; // 사운드 재생 확인 변수
+
+    void Start()
+    {
+        Sound = GetComponent<AudioSource>();
+    }
+
     void Update()
     {
-        if(is_start == true){
+        if (is_start)
+        {
             player.SetActive(true);
             enemy.SetActive(true);
         }
-        else{
+        else
+        {
             player.transform.position = new Vector3(-9f, -50f, 0f);
-            enemy.transform.position = new Vector3(9f,-50f, 0f);
+            enemy.transform.position = new Vector3(9f, -50f, 0f);
             e.HP = 30;
             player.SetActive(false);
             enemy.SetActive(false);
         }
-    //---------------------------------------------------------//
+
+        //---------------------------------------------------------//
         if (Gamemanager.Instance.player_HP <= 0)
         {
+            if (!soundPlayed)
+            {
+                Sound.Play();
+                soundPlayed = true;
+            }
             lose.SetActive(true);
             out_btn_fight.SetActive(true);
         }
-        else if(e.HP <= 0){
+        else if (e.HP <= 0)
+        {
+            if (!soundPlayed)
+            {
+                Sound.Play();
+                soundPlayed = true;
+            }
             win.SetActive(true);
             out_btn_fight.SetActive(true);
         }
@@ -42,6 +65,7 @@ public class fight_control : MonoBehaviour
             win.SetActive(false);
             lose.SetActive(false);
             out_btn_fight.SetActive(false);
+            soundPlayed = false;
         }
     }
 }
