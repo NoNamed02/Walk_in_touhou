@@ -36,6 +36,7 @@ public class Soundmanager : MonoBehaviour
     
     public AudioSource Sound;
     public AudioClip goto_reimu;
+    public AudioClip talk_sound;
     public string sound_name;
 
     public void Playsound(string n){
@@ -43,6 +44,9 @@ public class Soundmanager : MonoBehaviour
         switch(sound_name){
             case "hakurei":
                 Sound.clip = goto_reimu;
+                break;
+            case "talk":
+                Sound.clip = talk_sound;
                 break;
         }
         Sound.Play();
