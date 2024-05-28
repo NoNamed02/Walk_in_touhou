@@ -53,7 +53,7 @@ public class move_scence_2rd : MonoBehaviour
         {
             if (Sprite.color.a < maxAlpha)
             {
-                Sprite.color += new Color(0f, 0f, 0f, 0.05f);
+                Sprite.color += new Color(0f, 0f, 0f, 0.01f);
             }
             else
             {
