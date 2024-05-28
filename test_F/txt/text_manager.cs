@@ -100,6 +100,7 @@ public class text_manager : MonoBehaviour
     {
         if (currentLine < rowSize)
         {
+            Soundmanager.Instance.Playsound("talk");
             Name.text = Sentence[currentLine, 1];
             chat.text = Sentence[currentLine, 2];
 
