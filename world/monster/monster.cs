@@ -12,8 +12,11 @@ public class monster : MonoBehaviour
     public GPSManager player;
     public CameraSwitch cameraswitch;
 
+    //public AudioSource Sound;
+
     void Start()
     {
+        //Sound = GetComponent<AudioSource>();
         // Collider2D 컴포넌트를 찾아서 monsterCollider 변수에 할당합니다.
         monsterCollider = GetComponent<Collider2D>();
         GameObject move_scenceObject = GameObject.Find("Move_scene");
@@ -34,7 +37,6 @@ public class monster : MonoBehaviour
             player = playerObject.GetComponent<GPSManager>();
         }
 
-        // Collider2D를 찾지 못한 경우 오류 메시지를 표시합니다.
         if (monsterCollider == null)
         {
             Debug.LogError("Collider2D를 찾을 수 없습니다. Monster GameObject에 Collider2D 컴포넌트를 추가하세요.");
@@ -52,11 +54,15 @@ public class monster : MonoBehaviour
         {
             if (monsterCollider != null)
             {
+                //Sound.Play();
                 monsterCollider.enabled = false;
                 player.ismove = false;
-                move_scence.SetActive(true);
+                //move_scence.SetActive(true);
+                Vector3 pos = new Vector3(transform.position.x, transform.position.y, -2f);
+                Instantiate(move_scence, pos, gameObject.transform.rotation);
                 Destroy(gameObject);
             }
         }
     }
+
 }
