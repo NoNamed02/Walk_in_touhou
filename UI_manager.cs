@@ -21,6 +21,8 @@ public class UI_manager : MonoBehaviour
     void Update()
     {
         if(player.ismove == true && C.isCameraActive == 1){
+            if((!BGMmanager.Instance.Sound.isPlaying || BGMmanager.Instance.sound_name != "Main") && BGMmanager.Instance != null)
+                BGMmanager.Instance.Playsound("Main");
             World_UI.SetActive(true);
             Shop_UI.SetActive(false); 
             Fight_UI.SetActive(false);
@@ -45,6 +47,8 @@ public class UI_manager : MonoBehaviour
             Marisa_UI.SetActive(false);
         }
         else if(player.ismove == false && C.isCameraActive == 4){
+            if((!BGMmanager.Instance.Sound.isPlaying || BGMmanager.Instance.sound_name != "Hakurei") && BGMmanager.Instance != null)
+                BGMmanager.Instance.Playsound("Hakurei");
             World_UI.SetActive(false);
             Shop_UI.SetActive(false);
             Fight_UI.SetActive(false);
