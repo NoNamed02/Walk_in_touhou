@@ -6,8 +6,8 @@ using UnityEngine.UI;  // UnityEngine.UI 네임스페이스를 추가합니다.
 public class back_g_cs : MonoBehaviour
 {
     public mini_control mini;
-
     private Image image;
+    public bool is_end = false;
 
     // Start is called before the first frame update
     void Start()
@@ -18,9 +18,10 @@ public class back_g_cs : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (mini.score >= 20)
+        if (mini.score >= 20 && is_end == true)
         {
             StartCoroutine(FadeImage());
+            is_end = false;       
         }
         else
             image.color = new Color(1f,1f,1f,1f);
