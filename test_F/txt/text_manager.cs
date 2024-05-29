@@ -200,12 +200,9 @@ public class text_manager : MonoBehaviour
     void help()
     {
         NPCManager.Instance.Gold += 10;
-        Debug.Log("check!!!!!!!!!!!!!!");
         currentLine = 43;
-        Debug.Log("check!!!!!!!!!!!!!!2");
         DisplayNextSentence();
         Debug.Log(currentLine.ToString() + " ;;;" + rowSize.ToString());
-        Debug.Log("check!!!!!!!!!!!!!!3");
         control.score = 0;
         mini.gameObject.SetActive(true);
     }
